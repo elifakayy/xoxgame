@@ -2,14 +2,23 @@
 const X_CLASS ='cross'
 const O_CLASS='circle'
 const COMBINATIONS = [
+    [0,1,2],
+    [3,4,5],
+    [6,7,8],
+    [0,3,6],
+    [1,4,7],
+    [2,5,8],
+    [0,4,8],
+    [2,4,6]
+
 
 ]
 
-const board = document.getElementById('board')
+const board = document.getElementById('gameBoard')
 const cells = document.querySelectorAll('.cell')
 const result = document.getElementById('result')
 const resultText= document.querySelector('.result-text')
-const restartButton = document.getElementById(restartButton)
+const restartButton = document.getElementById('restartButton')
 
 let turn
 
@@ -19,7 +28,7 @@ const placeMark = (cell,currentClass) =>{
     cell.classList.add(currentClass)
 }
 //işaretlemeyi kontrol ediyoruz
-const placeHover=()=>{
+const placeHover = () => {
     board.classList.remove(X_CLASS)
     board.classList.remove(O_CLASS)
 
@@ -36,7 +45,7 @@ const endGame = (draw) => {
 }
 // x ya da y, hücrelerde var mı diye bakıyoruz, bunu kontrol ediyoruz
 const isDraw = () => {
-    return[...cells].every(cell=>{
+    return [...cells].every(cell => {
         return cell.classList.contains(X_CLASS) || cell.classList.contains(O_CLASS)
     })
 }
@@ -44,7 +53,7 @@ const isDraw = () => {
 //kazanan durumlarla eşleşiyor mu diye kontrol ediyorum
 const checkWin = (currentClass) => {
     return COMBINATIONS.some(combination => {
-        return combination.every(index =>{
+        return combination.every(index => {
             return cells[index].classList.contains(currentClass)
         })
     })
@@ -60,7 +69,7 @@ const handleClick = (e) => {
         endGame(false)
 
     }
-    else if (isDraw()) {
+    else if(isDraw()) {
         endGame(true)
     }
     else{
@@ -76,8 +85,9 @@ const resetGame =() =>{
         cell.addEventListener('click',handleClick, {once : true})
     })
 }
-const startGame = () =>{
+const startGame = () => {
     turn =false
+    resetGame()
     placeHover()
     result.classList.remove('show')
 }

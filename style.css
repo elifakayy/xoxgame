@@ -1,28 +1,16 @@
 *,*::before,*::after{box-sizing: border-box;}
-/*
-:root{
-    background-color:black ;
-    text-color: #fff;
-    border-color: #fff;
-    line-color: #fff;
-    hover-color: ;
-    cell-size: 100px;
-    mark-size: 90px;
 
-   
-}
-*/
 h1{
    font-size: 4rem;
-  
-
+   color: #fff;
 }
-h1,h2{
+
+h4{
     margin-bottom: 5rem;
-    color: #fff;
+    color: rgb(152, 222, 177);
 }
 body{
-    margin: 0; padding: 0; background-color: black;
+    margin: 0; padding: 0; background-color: #000;
     /* background-color: rgb(8, 57, 27);  */
     font-family: sans-serif;
     display: flex;
@@ -34,7 +22,7 @@ body{
 
 }
 
-.game-board{
+.gameBoard{
     width: 100vw;
     height: 100vh;
     display: grid;
@@ -48,7 +36,7 @@ body{
 .cell{
     width: 100px;
     height: 100px;
-    border: 2px solid #fff;
+    border: 2px solid rgb(152, 222, 177);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,7 +48,7 @@ body{
 .cell:first-child,.cell:nth-child(2),.cell:nth-child(3){
     border-top: 0;
 }
-.cell:last-child,.cell:nth-child(8),.cell:nth-child(7){
+.cell:last-child,.cell:nth-child(7),.cell:nth-child(8){
     border-bottom: 0;
 }
 /*soldaki çizgiler*/
@@ -73,35 +61,36 @@ body{
 
 
 
-  /*  //xi yazdıralım 
+  /*  xi yazdırma
   etkileşim için hover aktifleştirme*/
 .cell.cross::before,
 .cell.cross::after,
-.game-board.cross .cell:not(.cross):not(.circle):hover::before,
-.game-board.cross .cell:not(.cross):not(.circle):hover::after{
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::before,
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::after{
     content: '';
     position: absolute;
-    width: 90px*.13;
+    width: calc(90px * .13);
     height: 90px;
-    background-color: #fff;
+    background-color:#fff;
 
 }
 
 
 .cell.cross::before,
-.game-board.cross .cell:not(.cross):not(.circle):hover::before{
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::before{
     transform: rotate(45deg);
+    
 }
 
 .cell.cross::after,
-.game-board.cross .cell:not(.cross):not(.circle):hover::after{
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::after{
     transform: rotate(-45deg);
 }
 
 .cell.circle::before,
 .cell.circle::after,
-.game-board.circle .cell:not(.cross):not(.circle):hover::before,
-.game-board.circle .cell:not(.cross):not(.circle):hover::after{
+.gameBoard.circle .cell:not(.cross):not(.circle):hover::before,
+.gameBoard.circle .cell:not(.cross):not(.circle):hover::after{
     content: '';
     position: absolute;
     border-radius: 50%;
@@ -109,24 +98,25 @@ body{
 }
 
 .cell.circle::before,
-.game-board.circle .cell:not(.cross):not(.circle):hover::before{
-    width: 90px*.9;
-    height: 90px*.9;
+.gameBoard.circle .cell:not(.cross):not(.circle):hover::before{
+    width: calc(90px * .9);
+    height:  80px;
+    background-color:#fff;
 }
 
 .cell.circle::after,
-.game-board.circle .cell:not(.cross):not(.circle):hover::after{
-    width: 90px*.65;
-    height: 90px*.65;
-    background-color:aqua;
+.gameBoard.circle .cell:not(.cross):not(.circle):hover::after{
+    width: calc(90px * .57);
+    height: calc(90px * .65);
+    background-color:#000;
 
 }
 
 
-.game-board.cross .cell:not(.cross):not(.circle):hover::before,
-.game-board.cross .cell:not(.cross):not(.circle):hover::after
-.game-board.circle .cell:not(.cross):not(.circle):hover::before{
-    background: color #666;;
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::before,
+.gameBoard.cross .cell:not(.cross):not(.circle):hover::after
+.gameBoard.circle .cell:not(.cross):not(.circle):hover::before{
+    background-color: #fff;
 }
 
 .cell.cross,.cell.circle{ cursor: not-allowed;} 
@@ -138,23 +128,24 @@ body{
     align-items: center;
     position: fixed;
     top: 0;    left: 0; right: 0; bottom: 0;
-    background-color: #fff;
-    font-size: 5rem;
+    background-color: rgba(158, 237, 206, 0.8);
+    color: rgb(3, 75, 38);
+    font-size: 4rem;
 
 }
 
 .result button{
     background-color: #fff;
-    color: aquamarine;
+    color:#000;
     padding: .25rem .5rem;
     cursor: pointer;
     border: 0;
 }
 
 .result button:hover{
-    background-color: #fff;
-    color: aquamarine;
+    background-color:rgb(3, 75, 38);
+    color: #fff;
     
 }
-.result.show{ display: flex;}
+.result.show{ display: flex}
 
