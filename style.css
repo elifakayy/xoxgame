@@ -1,0 +1,129 @@
+*,*::before,*::after{box-sizing: border-box;}
+/*
+:root{
+    background-color:black ;
+    text-color: #fff;
+    border-color: #fff;
+    line-color: #fff;
+    hover-color: ;
+    cell-size: 100px;
+    mark-size: 90px;
+
+   
+}
+*/
+h1{
+   font-size: 4rem;
+  
+
+}
+h1,h2{
+    margin-bottom: 5rem;
+    color: #fff;
+}
+body{
+    margin: 0; padding: 0; background-color: black;
+
+}
+
+.game-board{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+
+}
+
+.cell{
+    width: 100px;
+    height: 100px;
+    border: 2px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+}
+
+/*etraftaki çizgilerden kurtuluyoruz*/
+.cell:first-child,.cell:nth-child(2),.cell:nth-child(3){
+    border-top: 0;
+}
+.cell:last-child,.cell:nth-child(8),.cell:nth-child(7){
+    border-bottom: 0;
+}
+/*soldaki çizgiler*/
+.cell:nth-child(3n+1){
+    border-left: 0;
+}
+.cell:nth-child(3n+3){
+    border-right: 0;
+}
+  /*  //xi yazdıralım 
+  etkileşim için hover aktifleştirme*/
+.cell.cross::before,
+.cell.cross::after,
+.game-board.cross .cell:not(.cross):not(.circle):hover::before,
+.game-board.cross .cell:not(.cross):not(.circle):hover::after
+{
+    content: '';
+    position: absolute;
+    width: 90px*.13;
+    height: 90px;
+    background-color: #fff;
+
+}
+
+
+.cell.cross::before,
+.game-board.cross .cell:not(.cross):not(.circle):hover::before
+{
+    transform: rotate(45deg);
+}
+
+.cell.cross::after,
+.game-board.cross .cell:not(.cross):not(.circle):hover::after
+{
+    transform: rotate(-45deg);
+}
+
+.cell.circle::before,
+.cell.circle::after,
+.game-board.circle .cell:not(.cross):not(.circle):hover::before,
+.game-board.circle .cell:not(.cross):not(.circle):hover::after
+{
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background-color:#fff;
+}
+
+.cell.circle::before,
+.game-board.circle .cell:not(.cross):not(.circle):hover::before
+{
+    width: 90px*.9;
+    height: 90px*.9;
+}
+
+.cell.circle::after,
+.game-board.circle .cell:not(.cross):not(.circle):hover::after
+{
+    width: 90px*.65;
+    height: 90px*.65;
+    background-color:aqua;
+
+}
+
+
+.game-board.cross .cell:not(.cross):not(.circle):hover::before,
+.game-board.cross .cell:not(.cross):not(.circle):hover::after
+.game-board.circle .cell:not(.cross):not(.circle):hover::before
+{
+    background-color: var(hover-color);
+}
+
+.cell.cross,.cell.circle{ cursor: not-allowed;} 
+
